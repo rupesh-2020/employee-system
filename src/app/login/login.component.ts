@@ -3,15 +3,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService, AuthenticationService } from '@/_services';
+import { AlertService, AuthenticationService } from '../_services';
+import { User } from '../_models';
 
-@Component({ templateUrl: 'login.component.html' })
+@Component({ templateUrl: 'login.component.html',
+             styleUrls: ['./login.component.css'] })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
-
+    loginUser:User = null;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -48,7 +50,7 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
-
+        
         this.loading = true;
         this.authenticationService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
@@ -60,5 +62,12 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+         /* this.loginUser =  this.authenticationService.login(this.f.username.value, this.f.password.value);
+          if(this.loginUser!=null){
+            this.router.navigate([this.returnUrl]);
+          }else{
+                //this.alertService.error(error);
+                this.loading = false;
+          }*/
     }
 }

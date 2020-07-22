@@ -1,29 +1,72 @@
-﻿<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-    </div>
-</nav>
 
-<!-- main app container -->
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 offset-sm-3">
-                <alert></alert>
-                <router-outlet></router-outlet>
-            </div>
-        </div>
-    </div>
+<!-- nav -->
+
+   <!--<div class="navbar-nav">
+       <a class="nav-item nav-link" routerLink="/">Home</a>
+       <a class="nav-item nav-link" routerLink="/side-bar">Employees</a>
+       <a class="nav-item nav-link" (click)="logout()">Logout</a>
+   </div>-->
+   <div  *ngIf="currentUser">
+   <div class="header">
+    <a href="#default" class="logo"><img src="assets/logo.jpg" /></a>
+  </div>   
+    <nav>
+      <ul>
+          <li>
+              <a class="nav-item nav-link" routerLink="/">Home</a>                
+          </li>
+          <li>
+              <a title="Design Corner" href="#" aria-haspopup="true">Employees</a>
+              <ul>
+                  <li>
+                      <a class="nav-item nav-link" routerLink="/side-bar">List</a>
+                  </li>
+                  <li>
+                      <a title="Sub Link 2" href="#">Add Employee</a>
+                  </li>
+                  <li>
+                      <a title="Sub Link 3" href="#" aria-haspopup="true">Sub Link 3</a>
+                      <ul>
+                          <li>
+                              <a title="Sub sub Link 1" href="#">Sub Sub Link 1</a>
+                          </li>
+                          <li>
+                              <a title="Sub Sub Link 2" href="#">Sub Sub Link 2</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <a title="Products" href="#" aria-haspopup="true">Products</a>
+              <ul>
+                  <li>
+                      <a title="Sub Link 1" href="#">Product 1</a>
+                  </li>
+                  <li>
+                      <a title="Sub Link 2" href="#">Product 2</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <a title="Contact Us" href="#">Contact Us</a>
+          </li>
+          <li>
+              <a title="logout"  (click)="logout()">Logout</a>
+          </li>
+      </ul>
+  </nav>
 </div>
 
-<!-- credits -->
-<div class="text-center">
-    <p>
-        <a href="https://jasonwatmore.com/post/2019/06/10/angular-8-user-registration-and-login-example-tutorial" target="_top">Angular 8 - User Registration and Login Example & Tutorial</a>
-    </p>
-    <p>
-        <a href="https://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-    </p>
+
+<!-- main app container -->
+<div >
+ <div >
+     <div class="row">
+         <div class="col-sm-6 offset-sm-3">
+             <alert></alert>
+             <router-outlet></router-outlet>
+         </div>
+     </div>
+ </div>
 </div>

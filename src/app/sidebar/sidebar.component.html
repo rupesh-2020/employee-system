@@ -1,0 +1,35 @@
+<div class="employee">
+<div> Get Records  By :
+   <select (change) = "displayEmployeeBy($event.target.value)">
+     <option *ngFor="let val of values" >{{val}}</option>
+   </select>
+</div>
+<div>
+
+  <table width="100%" >
+    <thead>
+       <tr >
+          <th >#ID</th>
+          <th >Name</th>
+          <th >Designation</th>
+          <th >Department</th>
+          <th >Salary</th>
+          <th >Action</th>
+       </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let employee of employees" style="text-align: left; border: 1px solid black;">
+          <th >{{ employee.id }}</th>
+          <td >{{ employee.empName }}</td>
+          <td >{{ employee.designation }}</td>
+          <td >{{ employee.department}}</td>
+          <td >{{ employee.salary }}</td>
+          <td >
+             <button type="button" >Edit</button>
+             <button type="button" >Delete</button>
+          </td>
+       </tr>
+    </tbody>
+ </table>
+</div>
+</div>

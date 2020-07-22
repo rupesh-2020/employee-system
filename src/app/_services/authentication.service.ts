@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from '@/_models';
+import { User } from '../_models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -20,14 +20,28 @@ export class AuthenticationService {
     }
 
     login(username, password) {
-        return this.http.post<any>(`${config.apiUrl}/users/authenticate`, { username, password })
+        return this.http.post<any>('http://localhost:8801/users/authenticate', { username, password })
             .pipe(map(user => {
+                console.log(user);
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
             }));
     }
+
+    /*login(username, password): User {
+        alert(username+' '+password);
+        this.http.post('http://localhost:8801/users/authenticate', { username, password })
+            .subscribe((user => {
+                console.log(user);
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('currentUser', JSON.stringify(user));
+               // this.currentUserSubject.next(user);
+                return user;
+            }));
+            return null;
+    }*/
 
     logout() {
         // remove user from local storage and set current user to null

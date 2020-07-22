@@ -1,5 +1,7 @@
-﻿<h2>Login</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+﻿<div class="page">
+<div class="login">
+<h2>Login</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
     <div class="form-group">
         <label for="username">Username</label>
         <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
@@ -18,7 +20,9 @@
         <button [disabled]="loading" class="btn btn-primary">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Login
-        </button>
-        <a routerLink="/register" class="btn btn-link">Register</a>
+        </button>&nbsp;&nbsp;
+        <a routerLink="/register" class="btn btn-primary">Register</a>
     </div>
 </form>
+</div>
+</div>
